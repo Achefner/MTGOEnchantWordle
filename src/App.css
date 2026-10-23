@@ -1,0 +1,370 @@
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.app__header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 2rem;
+}
+
+.app__tagline {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+}
+
+.app__status {
+  color: var(--muted);
+}
+
+.app__alert {
+  background: var(--alert-bg);
+  border: 1px solid var(--alert-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+}
+
+.app__alert p {
+  margin: 0 0 0.5rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.guess-counter {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.win-panel--lost {
+  border-color: var(--none);
+}
+
+.guess-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.guess-form__field {
+  position: relative;
+  flex: 1;
+}
+
+.guess-form input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: inherit;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.guess-table__empty {
+  color: var(--muted);
+}
+
+.guess-table__wrapper {
+  overflow-x: auto;
+}
+
+.guess-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+}
+
+.guess-table th {
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  padding: 0.25rem 0.5rem;
+}
+
+.guess-table td {
+  padding: 0.6rem 0.5rem;
+  border-radius: 6px;
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.guess-table__name {
+  font-weight: 600;
+}
+
+.guess-table__row--correct .guess-table__name {
+  background: var(--exact);
+  color: #fff;
+}
+
+.hint {
+  text-align: center;
+  color: #fff;
+}
+
+.hint__arrow {
+  margin-left: 0.35rem;
+  font-weight: 700;
+}
+
+.hint--exact { background: var(--exact) !important; }
+.hint--partial { background: var(--partial) !important; }
+.hint--none { background: var(--none) !important; }
+.hint--higher, .hint--lower { background: var(--none) !important; }
+
+.legend {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend__swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.win-panel {
+  text-align: center;
+  margin: 1rem 0 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.win-panel h2 {
+  margin-top: 0;
+}
+
+.win-panel__card {
+  display: block;
+  width: 250px;
+  max-width: 100%;
+  margin: 1rem auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.3);
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.15);
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.suggestions__item {
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+
+.suggestions__item--active,
+.suggestions__item:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* --- set timeline --- */
+.set-timeline {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.set-timeline__item {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+
+.set-timeline__item img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.set-timeline__item[data-state='excluded'] {
+  opacity: 0.18;
+}
+
+.set-timeline__item[data-state='match'] {
+  background: var(--partial);
+  box-shadow: 0 0 0 2px var(--partial);
+}
+
+.legend__swatch--timeline,
+.legend__swatch--partial {
+  background: var(--partial);
+}
+
+.legend__swatch--none {
+  background: var(--none);
+}
+
+/* --- hint cells --- */
+/* Bar cells (colours, type, subtype): neutral unless exact; the bar shows the share. */
+.hint--partial,
+.hint--none {
+  background: var(--surface) !important;
+  color: inherit;
+}
+
+/* Solid cells (mana value, rarity, set): painted with the status colour. */
+.hint--solid.hint--partial {
+  background: var(--partial) !important;
+  color: #fff;
+}
+
+.hint--solid.hint--none {
+  background: var(--none) !important;
+  color: #fff;
+}
+
+.bar {
+  height: 5px;
+  margin-top: 6px;
+  border-radius: 3px;
+  background: rgba(127, 127, 127, 0.25);
+  overflow: hidden;
+}
+
+.bar__fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--partial);
+}
+
+.hint--exact .bar__fill {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* The dots and their bar share one inline box, so the bar is exactly as wide as the dots. */
+.color-group {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+}
+
+.color-group .bar {
+  width: 100%;
+}
+
+.color-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.color-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+}
+
+.color-dot--W { background: #f3edc6; }
+.color-dot--U { background: #3b8ed9; }
+.color-dot--B { background: #4d2d5f; }
+.color-dot--R { background: #d3202a; }
+.color-dot--G { background: #3f9c35; }
+.color-dot--C { background: #b9b4ab; }
+
+.mana-value {
+  display: inline-block;
+  min-width: 1.8em;
+  padding: 0.1em 0.4em;
+  border-radius: 999px;
+  background: rgba(127, 127, 127, 0.25);
+  font-weight: 600;
+}
+
+.rarity::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  border-radius: 3px;
+  vertical-align: -1px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: #9b6ad6;
+}
+
+.rarity--common::before { background: #2b2b2b; }
+.rarity--uncommon::before { background: #b8c0c8; }
+.rarity--rare::before { background: #d9b24a; }
+.rarity--mythic::before { background: #e3562a; }
+
+.set-icon {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.hint--exact .set-icon {
+  filter: invert(1) brightness(2);
+}
+
+.set-year {
+  font-weight: 600;
+}
